@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ar.edu.utn.prog2int.Dao;
 
-/**
- *
- * @author fede
- */
-public class GenericDAO {
+import java.util.List;
+
+public interface GenericDAO<T> {
+ 
+
+    void insert(T entity) throws Exception;
+
+    void update(T entity) throws Exception;
+
+    void delete(int id) throws Exception; // baja lógica o física
+
+    T getById(int id) throws Exception;
+
+    List<T> getAll() throws Exception;
     
 }

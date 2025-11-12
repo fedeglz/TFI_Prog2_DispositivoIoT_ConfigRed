@@ -13,12 +13,12 @@
 
 ## 👥 Integrantes del Grupo
 
-| Nombre y Apellido | Legajo | Rol |
-|--------------------|---------|-----------------------------|
-| 
-| 
-| 
-| 
+| Nombre y Apellido 
+|----------------------------------------------------------|
+| Francisco López
+| Gonzalo Luna
+| Juan Ignacio Malatesta
+| Federico González
 
 ---
 

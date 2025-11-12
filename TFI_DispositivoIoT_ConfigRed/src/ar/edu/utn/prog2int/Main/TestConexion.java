@@ -1,13 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ar.edu.utn.prog2int.Main;
 
-/**
- *
- * @author fede
- */
+import ar.edu.utn.prog2int.Config.DataBaseConnection;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class TestConexion {
+    
+    public static void main(String[] args) {
+        try {
+            Connection conn = DataBaseConnection.getConnection();
+            if (conn != null && !conn.isClosed()) {
+                System.out.println("✅ Prueba de conexión exitosa con la base de datos iot_db");
+            }
+            DataBaseConnection.closeConnection();
+        } catch (SQLException e) {
+            System.err.println("❌ Error durante la prueba de conexión: " + e.getMessage());
+        }
+    }
     
 }
