@@ -10,11 +10,11 @@ public class TestConexion {
         try {
             Connection conn = DataBaseConnection.getConnection();
             if (conn != null && !conn.isClosed()) {
-                System.out.println("✅ Prueba de conexión exitosa con la base de datos iot_db");
+                System.out.println("Prueba de conexión exitosa con la base de datos iot_db");
             }
             DataBaseConnection.closeConnection();
         } catch (SQLException e) {
-            System.err.println("❌ Error durante la prueba de conexión: " + e.getMessage());
+            System.err.println("Error durante la prueba de conexión: " + e.getMessage());
         }
     }
     

@@ -13,13 +13,11 @@ public class DataBaseConnection {
     //Datos de conexión — adaptá según tu entorno
     private static final String URL = "jdbc:mysql://localhost:3306/iot_db?useSSL=false&serverTimezone=UTC";
     private static final String USER = "root";       // usuario MySQL
-    private static final String PASSWORD = "";       // contraseña MySQL
+    private static final String PASSWORD = "root";       // contraseña MySQL
 
     private static Connection connection = null;
 
-    /**
-     * Devuelve una conexión activa a la base de datos.
-     */
+    
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             try {
