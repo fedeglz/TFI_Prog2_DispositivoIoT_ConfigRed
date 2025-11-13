@@ -5,11 +5,11 @@ import java.util.List;
 public interface GenericDAO<T> {
  
 
-    void insert(T entity) throws Exception;
+    void insertar(T entity) throws Exception;
 
-    void update(T entity) throws Exception;
+    void actualizar(T entity) throws Exception;
 
-    void delete(int id) throws Exception; // baja lógica o física
+    void eliminar(int id) throws Exception; // baja lógica o física
 
     T getById(int id) throws Exception;
 
