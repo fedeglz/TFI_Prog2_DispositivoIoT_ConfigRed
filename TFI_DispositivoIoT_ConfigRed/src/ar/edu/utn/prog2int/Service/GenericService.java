@@ -18,7 +18,7 @@ public abstract class GenericService<T> {
         try (Connection con = DataBaseConnection.getConnection()) {
             con.setAutoCommit(false);
 
-            dao.insertar(entity);
+            dao.insertar(entity, con);
 
             con.commit();
             System.out.println("Transacción completada: inserción exitosa.");
@@ -33,7 +33,7 @@ public abstract class GenericService<T> {
         try (Connection con = DataBaseConnection.getConnection()) {
             con.setAutoCommit(false);
 
-            dao.actualizar(entity);
+            dao.actualizar(entity, con);
 
             con.commit();
             System.out.println("Transacción completada: actualización exitosa.");

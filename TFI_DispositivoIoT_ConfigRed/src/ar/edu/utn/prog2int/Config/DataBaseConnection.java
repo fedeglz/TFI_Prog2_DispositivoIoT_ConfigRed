@@ -22,9 +22,9 @@ public class DataBaseConnection {
         if (connection == null || connection.isClosed()) {
             try {
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                System.out.println("✅Conexión establecida con la base de datos.");
+                System.out.println("Conexión establecida con la base de datos.");
             } catch (SQLException e) {
-                System.err.println("❌Error al conectar con la base de datos: " + e.getMessage());
+                System.err.println("Error al conectar con la base de datos: " + e.getMessage());
                 throw e;
             }
         }
@@ -41,7 +41,7 @@ public class DataBaseConnection {
                 System.out.println("Conexión cerrada correctamente.");
             }
         } catch (SQLException e) {
-            System.err.println("❌Error al cerrar la conexión: " + e.getMessage());
+            System.err.println("Error al cerrar la conexión: " + e.getMessage());
         }
     }
     

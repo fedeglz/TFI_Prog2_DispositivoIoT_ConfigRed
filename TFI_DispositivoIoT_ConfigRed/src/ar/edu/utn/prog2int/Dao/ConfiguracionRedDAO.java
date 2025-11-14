@@ -10,31 +10,28 @@ import java.util.List;
 public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
 
     @Override
-    public void insertar(ConfiguracionRed c) throws Exception {
-        String sql = "INSERT INTO configuracion_red (ip, mascara, gateway, dns_primario, dhcp_habilitado, eliminado) VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DataBaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+    public void insertar(ConfiguracionRed c, Connection con) throws Exception {
+        String sql = "INSERT INTO configuracion_red (ip, mascara, gateway, dns_primario, dhcp_habilitado, eliminado) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
 
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, c.getIp());
             ps.setString(2, c.getMascara());
             ps.setString(3, c.getGateway());
             ps.setString(4, c.getDnsPrimario());
             ps.setBoolean(5, c.isDhcpHabilitado());
             ps.setBoolean(6, c.isEliminado());
-
             ps.executeUpdate();
-            System.out.println("Configuración insertada correctamente.");
-
-        } catch (SQLException e) {
-            throw new Exception("Error al insertar configuración: " + e.getMessage());
+        } catch (Exception e) {
+            throw new Exception("Error en la inserción (DAO): " + e.getMessage());
         }
     }
 
     @Override
-    public void actualizar(ConfiguracionRed c) throws Exception {        
+    public void actualizar(ConfiguracionRed c, Connection con) throws Exception {
         String sql = "UPDATE configuracion_red SET ip=?, mascara=?, gateway=?, dns_primario=?, dhcp_habilitado=?, eliminado=? WHERE id=?";
-        try (Connection conn = DataBaseConnection.getConnection(); 
-                PreparedStatement ps = conn.prepareStatement(sql)) {
-            
+        
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, c.getIp());
             ps.setString(2, c.getMascara());
             ps.setString(3, c.getGateway());
@@ -44,18 +41,15 @@ public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
             ps.setInt(7, c.getId());
 
             ps.executeUpdate();
-            System.out.println("Configuración actualizada correctamente.");
-            
-        }catch (SQLException e) {
-            throw new Exception("Error al eliminar configuración: " + e.getMessage());
+        } catch (Exception e) {
+            throw new Exception("Error en la actualización (DAO): " + e.getMessage());
         }
     }
 
     @Override
     public void eliminar(int id) throws Exception {
         String sql = "UPDATE configuracion_red SET eliminado = true WHERE id = ?";
-        try (Connection conn = DataBaseConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = DataBaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -68,11 +62,10 @@ public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
 
     @Override
     public ConfiguracionRed getById(int id) throws Exception {
-         String sql = "SELECT * FROM configuracion_red WHERE id = ?";
+        String sql = "SELECT * FROM configuracion_red WHERE id = ?";
         ConfiguracionRed c = null;
 
-        try (Connection conn = DataBaseConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = DataBaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -101,9 +94,7 @@ public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
         List<ConfiguracionRed> lista = new ArrayList<>();
         String sql = "SELECT * FROM configuracion_red WHERE eliminado = false";
 
-        try (Connection conn = DataBaseConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+        try (Connection conn = DataBaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 lista.add(new ConfiguracionRed(
@@ -123,6 +114,5 @@ public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
 
         return lista;
     }
-    
 
 }

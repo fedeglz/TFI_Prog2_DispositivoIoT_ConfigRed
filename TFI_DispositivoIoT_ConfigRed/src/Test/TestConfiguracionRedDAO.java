@@ -3,6 +3,8 @@ package Test;
 
 import ar.edu.utn.prog2int.Dao.ConfiguracionRedDAO;
 import ar.edu.utn.prog2int.Models.ConfiguracionRed;
+import ar.edu.utn.prog2int.Config.DataBaseConnection;
+import java.sql.Connection;
 import java.util.List;
 
 
@@ -10,7 +12,7 @@ public class TestConfiguracionRedDAO {
 
     public static void main(String[] args) {
         
-          try {
+          try (Connection con = DataBaseConnection.getConnection()) {
             ConfiguracionRedDAO dao = new ConfiguracionRedDAO();
 
             System.out.println("=== INSERT ===");
@@ -21,7 +23,7 @@ public class TestConfiguracionRedDAO {
                     "8.8.8.8",
                     true
             );
-            dao.insertar(nueva);
+            dao.insertar(nueva, con);
 
             System.out.println("\n=== LISTAR TODAS ===");
             List<ConfiguracionRed> lista = dao.getAll();
@@ -41,7 +43,7 @@ public class TestConfiguracionRedDAO {
             if (buscada != null) {
                 buscada.setDnsPrimario("1.1.1.1");
                 buscada.setGateway("192.168.1.254");
-                dao.actualizar(buscada);
+                dao.actualizar(buscada, con);
                 System.out.println("Configuración actualizada: " + buscada);
             }
 
