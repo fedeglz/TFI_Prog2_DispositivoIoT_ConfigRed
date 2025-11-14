@@ -22,12 +22,12 @@ public class ConfiguracionRedService extends GenericService<ConfiguracionRed> {
             dao.insertar(c, con); // Ahora el DAO usa la conexión abierta
 
             con.commit(); // Confirmamos los cambios
-            System.out.println("Inserción realizada correctamente (Service).");
+            System.out.println("Se inserto correctamente (Service).");
 
         } catch (Exception e) {
             if (con != null) {
                 con.rollback(); // Si hay error, deshacemos los cambios
-                System.out.println("Error en inserción, se hizo rollback.");
+                System.out.println("Error al insertar, se hizo rollback.");
             }
             throw e;
         } finally {
@@ -48,7 +48,7 @@ public class ConfiguracionRedService extends GenericService<ConfiguracionRed> {
             dao.actualizar(c, con);
 
             con.commit();
-            System.out.println("Configuración actualizada correctamente (Service).");
+            System.out.println("Se actualizo correctamente (Service).");
 
         } catch (Exception e) {
             if (con != null) {
@@ -85,7 +85,7 @@ public class ConfiguracionRedService extends GenericService<ConfiguracionRed> {
             dao.eliminar(id, con);
             
             con.commit();
-            System.out.println("Configuracion eliminada correctamente.");
+            System.out.println("Se elimino correctamente.");
             
         } catch (Exception e) {
             if(con != null){

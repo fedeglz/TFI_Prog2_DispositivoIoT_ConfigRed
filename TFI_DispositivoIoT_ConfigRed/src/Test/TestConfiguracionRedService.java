@@ -55,7 +55,7 @@ public class TestConfiguracionRedService {
         System.out.println("\n=== TEST: DELETE (BAJA LÓGICA) ===");
 
         try {
-            service.eliminar(3); // Por ejemplo, eliminar el registro con ID 3
+            service.eliminar(3L); // Por ejemplo, eliminar el registro con ID 3
             System.out.println("Eliminación completada correctamente.");
         } catch (Exception e) {
             System.out.println("Error al eliminar: " + e.getMessage());
