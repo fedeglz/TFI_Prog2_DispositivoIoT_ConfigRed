@@ -31,9 +31,9 @@ public class DataBaseConnection {
         return connection;
     }
 
-    /**
-     * Cierra la conexión activa (si existe).
-     */
+    
+    // Cierra la conexión activa (si existe).
+    
     public static void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {

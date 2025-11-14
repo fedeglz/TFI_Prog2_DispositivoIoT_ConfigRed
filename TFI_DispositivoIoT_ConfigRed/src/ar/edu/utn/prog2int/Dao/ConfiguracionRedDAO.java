@@ -29,8 +29,10 @@ public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
 
     @Override
     public void actualizar(ConfiguracionRed c, Connection con) throws Exception {
-        String sql = "UPDATE configuracion_red SET ip=?, mascara=?, gateway=?, dns_primario=?, dhcp_habilitado=?, eliminado=? WHERE id=?";
-        
+        String sql = "UPDATE configuracion_red SET "
+                + "ip = ?, mascara = ?, gateway = ?, dns_primario = ?, dhcp_habilitado = ?, eliminado = ? "
+                + "WHERE id = ?";
+
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, c.getIp());
             ps.setString(2, c.getMascara());
@@ -38,7 +40,7 @@ public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
             ps.setString(4, c.getDnsPrimario());
             ps.setBoolean(5, c.isDhcpHabilitado());
             ps.setBoolean(6, c.isEliminado());
-            ps.setInt(7, c.getId());
+            ps.setLong(7, c.getId());
 
             ps.executeUpdate();
         } catch (Exception e) {
@@ -47,32 +49,30 @@ public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id, Connection con) throws Exception {
         String sql = "UPDATE configuracion_red SET eliminado = true WHERE id = ?";
-        try (Connection conn = DataBaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setInt(1, id);
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setLong(1, id);
             ps.executeUpdate();
-            System.out.println("Configuración marcada como eliminada.");
-
+            System.out.println("Configuración marcada como eliminada (DAO).");
         } catch (SQLException e) {
-            throw new Exception("Error al eliminar configuración: " + e.getMessage());
+            throw new Exception("Error al eliminar configuración (DAO): " + e.getMessage());
         }
     }
 
     @Override
-    public ConfiguracionRed getById(int id) throws Exception {
+    public ConfiguracionRed getById(Long id) throws Exception {
         String sql = "SELECT * FROM configuracion_red WHERE id = ?";
         ConfiguracionRed c = null;
 
         try (Connection conn = DataBaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
+            ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 c = new ConfiguracionRed(
-                        rs.getInt("id"),
+                        rs.getLong("id"),
                         rs.getBoolean("eliminado"),
                         rs.getString("ip"),
                         rs.getString("mascara"),
@@ -98,7 +98,7 @@ public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
 
             while (rs.next()) {
                 lista.add(new ConfiguracionRed(
-                        rs.getInt("id"),
+                        rs.getLong("id"),
                         rs.getBoolean("eliminado"),
                         rs.getString("ip"),
                         rs.getString("mascara"),

@@ -4,16 +4,15 @@ import java.sql.Connection;
 import java.util.List;
 
 public interface GenericDAO<T> {
- 
 
     void insertar(T entity, Connection con) throws Exception;
 
     void actualizar(T entity, Connection con) throws Exception;
 
-    void eliminar(int id) throws Exception; // baja lógica o física
+    void eliminar(Long id, Connection con) throws Exception; // baja lógica o física
 
-    T getById(int id) throws Exception;
+    T getById(Long id) throws Exception;
 
     List<T> getAll() throws Exception;
-    
+
 }

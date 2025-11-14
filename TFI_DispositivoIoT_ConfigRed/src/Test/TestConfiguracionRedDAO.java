@@ -32,7 +32,7 @@ public class TestConfiguracionRedDAO {
             }
 
             System.out.println("\n=== OBTENER POR ID ===");
-            ConfiguracionRed buscada = dao.getById(1); // cambia el ID si hace falta
+            ConfiguracionRed buscada = dao.getById(1L); // cambia el ID si hace falta
             if (buscada != null) {
                 System.out.println("Configuración encontrada: " + buscada);
             } else {
@@ -48,7 +48,7 @@ public class TestConfiguracionRedDAO {
             }
 
             System.out.println("\n=== DELETE (LÓGICO) ===");
-            dao.eliminar(2); // cambia el ID que quieras eliminar
+            dao.eliminar(2L, con); // cambia el ID que quieras eliminar
             System.out.println("Eliminación lógica realizada.");
 
             System.out.println("\n=== LISTAR DESPUÉS DE DELETE ===");

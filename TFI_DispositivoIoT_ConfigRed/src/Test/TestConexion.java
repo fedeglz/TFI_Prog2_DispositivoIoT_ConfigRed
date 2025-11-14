@@ -1,4 +1,4 @@
-package ar.edu.utn.prog2int.Main;
+package Test;
 
 import ar.edu.utn.prog2int.Config.DataBaseConnection;
 import java.sql.Connection;

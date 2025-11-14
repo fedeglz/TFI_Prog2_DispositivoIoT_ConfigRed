@@ -44,11 +44,11 @@ public abstract class GenericService<T> {
         }
     }
 
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         try (Connection con = DataBaseConnection.getConnection()) {
             con.setAutoCommit(false);
 
-            dao.eliminar(id);
+            dao.eliminar(id, con);
 
             con.commit();
             System.out.println("Transacción completada: eliminación lógica exitosa.");
@@ -59,7 +59,7 @@ public abstract class GenericService<T> {
         }
     }
 
-    public T getById(int id) throws Exception {
+    public T getById(Long id) throws Exception {
         return dao.getById(id);
     }
 

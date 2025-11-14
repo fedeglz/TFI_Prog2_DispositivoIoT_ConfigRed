@@ -49,26 +49,66 @@ public class ConfiguracionRedService extends GenericService<ConfiguracionRed> {
 
             con.commit();
             System.out.println("Configuración actualizada correctamente (Service).");
+
         } catch (Exception e) {
             if (con != null) {
                 try {
                     con.rollback();
+                    System.out.println("Error en rollback: " + e.getMessage());
                 } catch (Exception ex) {
-                    System.out.println("Error en rollback: " + ex.getMessage());
+                    System.out.println("Error al intentar hacer rollback: " + ex.getMessage());
                 }
             }
             throw e;
+
         } finally {
             try {
-                if (con != null && !con.isClosed()) { // ✅ verificamos que siga abierta
+                if (con != null && !con.isClosed()) {
                     con.setAutoCommit(true);
                     con.close();
                 }
             } catch (Exception ex) {
                 System.out.println("Error al cerrar la conexión: " + ex.getMessage());
             }
-
         }
-
     }
+    
+    
+    @Override
+    public void eliminar(Long id) throws Exception {
+        Connection con = null;
+        
+        try {
+            con = DataBaseConnection.getConnection();
+            con.setAutoCommit(false);
+            
+            dao.eliminar(id, con);
+            
+            con.commit();
+            System.out.println("Configuracion eliminada correctamente.");
+            
+        } catch (Exception e) {
+            if(con != null){
+                try {
+                    con.rollback();
+                    System.out.println("Error en rollback " + e.getMessage());
+                } catch (Exception ex) {
+                    System.out.println("Error al intentar hacer rollback " + ex.getMessage());
+                }
+            }
+            throw e;            
+        } finally {
+            try {
+                if (con != null && !con.isClosed()){
+                    con.setAutoCommit(true);
+                    con.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Error al cerrar la conexión." + ex.getMessage());
+            }
+        }
+        
+    }
+    
+    
 }
