@@ -78,7 +78,7 @@ public class ConfiguracionRed extends Base {
         return "ConfiguracionRed{" + 
                 "id=" + getId() +
                 ", eliminado=" + isEliminado() +
-                "ip=" + ip + 
+                ", ip=" + ip + 
                 ", mascara=" + mascara + 
                 ", gateway=" + gateway + 
                 ", dnsPrimario=" + dnsPrimario + 

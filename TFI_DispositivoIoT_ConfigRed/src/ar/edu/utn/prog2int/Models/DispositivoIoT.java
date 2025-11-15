@@ -74,7 +74,7 @@ public class DispositivoIoT extends Base {
         return "DispositivoIoT{"
                 + "id=" + getId()
                 + ", eliminado=" + isEliminado()
-                + "serial=" + serial
+                + ", serial=" + serial
                 + ", modelo=" + modelo
                 + ", ubicacion=" + ubicacion
                 + ", firmwareVersion=" + firmwareVersion
