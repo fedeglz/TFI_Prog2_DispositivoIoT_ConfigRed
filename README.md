@@ -110,7 +110,7 @@ Archivo:
 
 ---
 
-#Prueba de Rollback
+## Prueba de Rollback
 El sistema incluye una operación transaccional en la capa de servicio (DispositivoIoTService).
 Simula un fallo al insertar un dispositivo con una clave foránea inválida, provocando un rollback de toda la transacción.
 
