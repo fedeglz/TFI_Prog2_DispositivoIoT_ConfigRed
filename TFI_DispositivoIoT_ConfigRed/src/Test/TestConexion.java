@@ -2,19 +2,17 @@ package Test;
 
 import ar.edu.utn.prog2int.Config.DataBaseConnection;
 import java.sql.Connection;
-import java.sql.SQLException;
+
 
 public class TestConexion {
     
     public static void main(String[] args) {
-        try {
-            Connection conn = DataBaseConnection.getConnection();
-            if (conn != null && !conn.isClosed()) {
-                System.out.println("Prueba de conexión exitosa con la base de datos iot_db");
+        try (Connection con = DataBaseConnection.getConnection()) {
+            if (con != null) {
+                System.out.println("Conexión exitosa usando .env");
             }
-            DataBaseConnection.closeConnection();
-        } catch (SQLException e) {
-            System.err.println("Error durante la prueba de conexión: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error de conexión: " + e.getMessage());
         }
     }
     

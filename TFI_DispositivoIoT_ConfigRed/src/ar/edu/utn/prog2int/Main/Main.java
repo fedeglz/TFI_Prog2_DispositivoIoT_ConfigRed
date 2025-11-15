@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ar.edu.utn.prog2int.Main;
 
-/**
- *
- * @author fede
- */
 public class Main {
-    
+
+    public static void main(String[] args) {
+        
+        System.out.println("=======================================");
+        System.out.println("     SISTEMA DE GESTIÓN IoT - UTN");
+        System.out.println("=======================================");
+
+        AppMenu menu = new AppMenu();
+        menu.iniciar();
+
+        System.out.println("\n Sistema finalizado correctamente.");
+    }
 }
