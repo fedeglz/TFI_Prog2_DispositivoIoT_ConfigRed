@@ -13,18 +13,6 @@ public class AppMenu {
     private final ConfiguracionRedService configService = new ConfiguracionRedService();
     private final DispositivoIoTService dispositivoService = new DispositivoIoTService();
 
-    
-
-    // MENÚ PRINCIPAL
-    private void mostrarMenuPrincipal() {
-        System.out.println("\n========== MENÚ PRINCIPAL ==========");
-        System.out.println("1. CRUD Configuración de Red");
-        System.out.println("2. CRUD Dispositivo IoT");
-        System.out.println("3. Probar Rollback Transaccional");
-        System.out.println("0. Salir");
-        System.out.println("====================================");
-    }
-    
     // MÉTODO PRINCIPAL DE MENÚ
     public void iniciar() {
         int opcion;
@@ -46,7 +34,16 @@ public class AppMenu {
             }
         } while (opcion != 0);
     }
-    
+
+    // MENÚ PRINCIPAL
+    private void mostrarMenuPrincipal() {
+        System.out.println("\n========== MENÚ PRINCIPAL ==========");
+        System.out.println("1. CRUD Configuración de Red");
+        System.out.println("2. CRUD Dispositivo IoT");
+        System.out.println("3. Probar Rollback Transaccional");
+        System.out.println("0. Salir");
+        System.out.println("====================================");
+    }
 
     // CRUD CONFIGURACIÓN DE RED
     private void menuConfiguracionRed() {
