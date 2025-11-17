@@ -51,6 +51,15 @@ Esta estructura permite simular la gestión de una red IoT real, en la que cada 
 
 ---
 
+### UML del Proyecto
+
+**Figura 1:** Arquitectura general del sistema (por capas)  
+**Figura 2:** Diagrama de clases – DispositivoIoT  
+**Figura 3:** Diagrama de clases – ConfiguracionRed  
+**Figura 4:** Relación 1 a 1 entre DispositivoIoT y ConfiguracionRed
+
+---
+
 ## Requisitos del Sistema
 
 -  **Java JDK 17+**  
