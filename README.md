@@ -51,7 +51,9 @@ Esta estructura permite simular la gestión de una red IoT real, en la que cada 
 
 ---
 
-### UML del Proyecto
+### UML del Proyecto 
+
+`\uml`
 
 **Figura 1:** Arquitectura general del sistema (por capas)  
 **Figura 2:** Diagrama de clases – DispositivoIoT  
