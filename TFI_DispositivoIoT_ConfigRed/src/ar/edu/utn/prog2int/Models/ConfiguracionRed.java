@@ -24,7 +24,7 @@ public class ConfiguracionRed extends Base {
         this.dhcpHabilitado = dhcpHabilitado;
     }
 
-    public ConfiguracionRed(int id, boolean eliminado ,String ip, String mascara, String gateway, String dnsPrimario, boolean dhcpHabilitado) {
+    public ConfiguracionRed(Long id, boolean eliminado ,String ip, String mascara, String gateway, String dnsPrimario, boolean dhcpHabilitado) {
         super(id, eliminado);
         this.ip = ip;
         this.mascara = mascara;
@@ -78,7 +78,7 @@ public class ConfiguracionRed extends Base {
         return "ConfiguracionRed{" + 
                 "id=" + getId() +
                 ", eliminado=" + isEliminado() +
-                "ip=" + ip + 
+                ", ip=" + ip + 
                 ", mascara=" + mascara + 
                 ", gateway=" + gateway + 
                 ", dnsPrimario=" + dnsPrimario + 

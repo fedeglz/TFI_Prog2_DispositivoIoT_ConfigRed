@@ -1,8 +1,7 @@
 package ar.edu.utn.prog2int.Models;
 
-
 public class DispositivoIoT extends Base {
-    
+
     private String serial;
     private String modelo;
     private String ubicacion;
@@ -21,7 +20,7 @@ public class DispositivoIoT extends Base {
         this.configuracionRed = configuracionRed;
     }
 
-    public DispositivoIoT(int id, boolean eliminado ,String serial, String modelo, String ubicacion, String firmwareVersion, ConfiguracionRed configuracionRed) {
+    public DispositivoIoT(Long id, boolean eliminado, String serial, String modelo, String ubicacion, String firmwareVersion, ConfiguracionRed configuracionRed) {
         super(id, eliminado);
         this.serial = serial;
         this.modelo = modelo;
@@ -72,15 +71,14 @@ public class DispositivoIoT extends Base {
 
     @Override
     public String toString() {
-        return "DispositivoIoT{" + 
-                "id=" + getId() +
-                ", eliminado=" + isEliminado() +
-                "serial=" + serial + 
-                ", modelo=" + modelo + 
-                ", ubicacion=" + ubicacion + 
-                ", firmwareVersion=" + firmwareVersion + 
-                ", configuracionRed=" + configuracionRed + '}';
-    }    
-    
-       
+        return "DispositivoIoT{"
+                + "id=" + getId()
+                + ", eliminado=" + isEliminado()
+                + ", serial=" + serial
+                + ", modelo=" + modelo
+                + ", ubicacion=" + ubicacion
+                + ", firmwareVersion=" + firmwareVersion
+                + ", configuracionRed=" + (configuracionRed != null ? configuracionRed.getIp() : "null") + '}';
+    }
+
 }

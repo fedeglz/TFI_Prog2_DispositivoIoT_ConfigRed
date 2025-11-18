@@ -3,23 +3,23 @@ package ar.edu.utn.prog2int.Models;
 
 public abstract class Base {
     
-    protected int id; // PK autoincrement
+    protected Long id; // PK autoincrement
     protected boolean eliminado; 
 
     public Base() {
         this.eliminado = false;
     }
 
-    public Base(int id, boolean eliminado) {
+    public Base(Long id, boolean eliminado) {
         this.id = id;
         this.eliminado = eliminado;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -33,7 +33,7 @@ public abstract class Base {
     
     @Override
     public int hashCode(){
-        return Integer.hashCode(id);
+        return id != null ? id.hashCode() : 0;
     }
 
     @Override
@@ -45,7 +45,7 @@ public abstract class Base {
             return false;
         }       
         Base other = (Base) obj;
-        return this.id == other.id;
+        return id != null && id.equals(other.id);
     }
     
     
