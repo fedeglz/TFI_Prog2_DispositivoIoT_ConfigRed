@@ -17,7 +17,7 @@ public class DispositivoIoTDAO implements GenericDAO<DispositivoIoT> {
     private static final String SELECT_ALL = "SELECT d.*, c.ip, c.mascara, c.gateway, c.dns_primario, c.dhcp_habilitado FROM dispositivo_iot d LEFT JOIN configuracion_red c ON d.id_configuracion = c.id WHERE d.eliminado = false";
 
   
-    // Método para validar entrada
+    // Metodo para validar entrada
     private void validar(DispositivoIoT dispositivo) {
         if (dispositivo == null) {
             throw new IllegalArgumentException("El dispositivo no puede ser nulo.");

@@ -15,7 +15,7 @@ public class ConfiguracionRedDAO implements GenericDAO<ConfiguracionRed> {
     private static final String GET_BY_ID = "SELECT * FROM configuracion_red WHERE id = ?";
     private static final String GET_ALL = "SELECT * FROM configuracion_red WHERE eliminado = false";
 
-    // --- Método de validación ---
+    // Metodo de validación
     private void validar(ConfiguracionRed c) throws Exception {
         if (c == null) {
             throw new Exception("La configuración no puede ser nula");
